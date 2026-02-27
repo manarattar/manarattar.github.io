@@ -1,423 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Manar Attar | AI Research Lab Portfolio</title>
-  <meta name="description" content="AI & NLP portfolio: applied ML systems, data pipelines, and research-grade projects." />
+  <meta charset="UTF-8">
+  <title>Manar Attar | AI Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <!-- Particle background -->
-  <canvas id="particles" aria-hidden="true"></canvas>
 
-  <!-- Scroll progress -->
-  <div id="scrollProgress" aria-hidden="true">
-    <div class="bar"></div>
+<canvas id="particles"></canvas>
+<div id="scrollProgress"><div class="bar"></div></div>
+
+<header class="topbar">
+  <h1>Manar Attar</h1>
+</header>
+
+<section class="hero">
+  <h2>AI & NLP Systems</h2>
+  <div class="terminal">
+    <span id="typing"></span><span class="cursor">|</span>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Projects</h2>
+
+  <div class="filters">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="nlp">NLP</button>
+    <button data-filter="data">Data</button>
   </div>
 
-  <!-- Top nav -->
-  <header class="topbar">
-    <div class="brand">
-      <span class="dot"></span>
-      <span class="brand-title">MANAR / AI LAB</span>
-      <span class="brand-sub">portfolio interface</span>
+  <div class="cards">
+    <div class="card" data-tags="nlp">
+      <h3>Emotion Classification</h3>
+      <p>SVM-based sentiment modeling under class imbalance.</p>
     </div>
 
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#publications">Publications</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact" class="nav-cta">Connect</a>
-    </nav>
-  </header>
+    <div class="card" data-tags="data">
+      <h3>Linked4Resilience</h3>
+      <p>Geo-data integration for crisis response.</p>
+    </div>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero-grid">
-        <div class="hero-left">
-          <div class="badge">
-            <span class="pulse"></span>
-            <span>System Status:</span>
-            <strong>Operational</strong>
-          </div>
+    <div class="card" data-tags="nlp data">
+      <h3>SwipeEat</h3>
+      <p>Preference-based meal recommender.</p>
+    </div>
+  </div>
+</section>
 
-          <h1 class="hero-title">
-            Manar Attar
-            <span class="hero-accent">AI & Data Scientist</span>
-          </h1>
-
-          <p class="hero-lead">
-            I build applied AI systems and NLP pipelines that convert complex, messy data into
-            reliable decisions—designed with research discipline and deployed with product pragmatism.
-          </p>
-
-          <!-- Typing animation -->
-          <div class="terminal" role="region" aria-label="AI terminal">
-            <div class="terminal-head">
-              <span class="lamp red"></span>
-              <span class="lamp yellow"></span>
-              <span class="lamp green"></span>
-              <span class="terminal-title">lab-console</span>
-            </div>
-            <div class="terminal-body">
-              <div class="line">
-                <span class="prompt">manar@lab</span><span class="colon">:</span><span class="path">~</span><span class="dollar">$</span>
-                <span id="typing" class="typing"></span><span class="cursor" aria-hidden="true">▍</span>
-              </div>
-              <div class="line subtle" id="typingOutput"></div>
-            </div>
-          </div>
-
-          <div class="hero-actions">
-            <a class="btn primary" href="#projects">Explore Projects</a>
-            <a class="btn ghost" href="#contact">Contact</a>
-          </div>
-
-          <div class="hero-meta">
-            <div class="meta-card">
-              <div class="meta-k">Focus</div>
-              <div class="meta-v">NLP • Applied ML • Data Pipelines</div>
-            </div>
-            <div class="meta-card">
-              <div class="meta-k">Location</div>
-              <div class="meta-v">Amsterdam / Amstelveen</div>
-            </div>
-            <div class="meta-card">
-              <div class="meta-k">Languages</div>
-              <div class="meta-v">English • Dutch • Arabic</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-right">
-          <div class="lab-panel reveal">
-            <div class="panel-head">
-              <span class="panel-title">Telemetry</span>
-              <span class="panel-chip">LIVE</span>
-            </div>
-
-            <div class="panel-body">
-              <div class="metric">
-                <div class="metric-label">Modeling</div>
-                <div class="metric-bar"><span style="width: 86%"></span></div>
-                <div class="metric-val">86%</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">NLP</div>
-                <div class="metric-bar"><span style="width: 91%"></span></div>
-                <div class="metric-val">91%</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Pipelines</div>
-                <div class="metric-bar"><span style="width: 82%"></span></div>
-                <div class="metric-val">82%</div>
-              </div>
-              <div class="metric">
-                <div class="metric-label">Delivery</div>
-                <div class="metric-bar"><span style="width: 88%"></span></div>
-                <div class="metric-val">88%</div>
-              </div>
-
-              <div class="divider"></div>
-
-              <div class="panel-note">
-                <div class="note-title">Research ↔ Production</div>
-                <p>
-                  I work comfortably across experimentation, evaluation under constraints (e.g., imbalance),
-                  and deployment-ready implementations.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="lab-card-stack">
-            <div class="stack-card reveal">
-              <div class="stack-title">Current Track</div>
-              <div class="stack-body">Master’s in Language & AI (VU Amsterdam)</div>
-            </div>
-            <div class="stack-card reveal">
-              <div class="stack-title">Applied Work</div>
-              <div class="stack-body">AI solutions, GPT assistants, workflow automation</div>
-            </div>
-            <div class="stack-card reveal">
-              <div class="stack-title">Research Output</div>
-              <div class="stack-body">Geo-data + Linked Data; SIGSPATIAL & BNAIC publications</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <a class="scroll-hint" href="#about" aria-label="Scroll to About">
-        <span class="mouse"></span>
-        <span class="scroll-text">Scroll</span>
-      </a>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="section">
-      <div class="section-head reveal">
-        <h2>About</h2>
-        <p>
-          I combine a rigorous academic background in Artificial Intelligence with hands-on implementation
-          experience. My interests center on language modeling, text analytics, robust evaluation, and building
-          systems that remain usable beyond the lab.
-        </p>
-      </div>
-
-      <div class="grid-2">
-        <article class="glass reveal">
-          <h3>Education</h3>
-          <ul class="list">
-            <li><strong>BSc Artificial Intelligence</strong> — Vrije Universiteit Amsterdam (2020–2023)</li>
-            <li><strong>Minor Data Science</strong> — Text analysis & NLP focus</li>
-            <li><strong>Startup Launch Program</strong> — Business Model Canvas (2024–2025)</li>
-            <li><strong>MSc Language & AI</strong> — VU Amsterdam (2025–present)</li>
-          </ul>
-        </article>
-
-        <article class="glass reveal">
-          <h3>Operating Principles</h3>
-          <ul class="list">
-            <li>Prefer interpretable baselines before complexity.</li>
-            <li>Stress-test models under realistic constraints (imbalance, drift, noise).</li>
-            <li>Design pipelines with reproducibility and auditability in mind.</li>
-            <li>Translate research insights into deliverable product outcomes.</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="section section-dark">
-      <div class="section-head reveal">
-        <h2>Experience</h2>
-        <p>Applied AI work focused on practical value, operational efficiency, and human-centered delivery.</p>
-      </div>
-
-      <div class="timeline reveal">
-        <div class="t-item">
-          <div class="t-dot"></div>
-          <div class="t-content">
-            <div class="t-top">
-              <h3>AI Consultant — Vervai</h3>
-              <span class="t-time">Apr 2024 – Present</span>
-            </div>
-            <ul class="bullets">
-              <li>Designed and implemented applied AI solutions with an emphasis on real-world feasibility.</li>
-              <li>Organized and delivered AI workshops bridging theoretical concepts and practical execution.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="t-item">
-          <div class="t-dot"></div>
-          <div class="t-content">
-            <div class="t-top">
-              <h3>Innovation Consultant — Daffee</h3>
-              <span class="t-time">Jun 2024 – Sep 2025</span>
-            </div>
-            <ul class="bullets">
-              <li>Created role-specific GPT assistants to improve productivity and decision support.</li>
-              <li>Built semi-automated workflows across marketing, sales, and operations to reduce manual tasks.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROJECTS -->
-    <section id="projects" class="section">
-      <div class="section-head reveal">
-        <h2>Projects</h2>
-        <p>
-          A selection of research and product-oriented builds. Use the filters to explore by theme.
-        </p>
-      </div>
-
-      <!-- Filters -->
-      <div class="filters reveal" role="toolbar" aria-label="Project filters">
-        <button class="chip active" data-filter="all">All</button>
-        <button class="chip" data-filter="nlp">NLP</button>
-        <button class="chip" data-filter="data">Data Pipelines</button>
-        <button class="chip" data-filter="recsys">Recommender</button>
-        <button class="chip" data-filter="conversational">Conversational AI</button>
-        <button class="chip" data-filter="research">Research</button>
-      </div>
-
-      <!-- Cards -->
-      <div class="cards">
-        <article class="card tilt reveal" data-tags="data research">
-          <div class="card-top">
-            <h3>LINKED4RESILIENCE</h3>
-            <span class="tag">Geo-data</span>
-            <span class="tag">Linked Data</span>
-          </div>
-          <p>
-            Data pipelines for cleaning, processing, and visualizing geo-annotated crisis datasets,
-            with unification via Linked Data methodologies.
-          </p>
-          <div class="card-foot">
-            <span class="mono">Python • RDF • SPARQL • Ontologies</span>
-            <span class="pill">SIGSPATIAL</span>
-          </div>
-        </article>
-
-        <article class="card tilt reveal" data-tags="recsys data">
-          <div class="card-top">
-            <h3>SwipeEat</h3>
-            <span class="tag">Recommender</span>
-            <span class="tag">UI</span>
-          </div>
-          <p>
-            Preference-based meal recommendation with a swipe-driven interface, deployed as a lightweight mobile web app.
-          </p>
-          <div class="card-foot">
-            <span class="mono">Python • Flask • JS • HTML/CSS</span>
-            <span class="pill">Product Demo</span>
-          </div>
-        </article>
-
-        <article class="card tilt reveal" data-tags="nlp research">
-          <div class="card-top">
-            <h3>Emotion & Sentiment Classification</h3>
-            <span class="tag">NLP</span>
-            <span class="tag">Imbalance</span>
-          </div>
-          <p>
-            Built baselines and optimized SVM classifiers on large-scale conversational and social media text,
-            analyzing precision–recall trade-offs under imbalance.
-          </p>
-          <div class="card-foot">
-            <span class="mono">TF–IDF • SVM • Error Analysis</span>
-            <span class="pill">Evaluation</span>
-          </div>
-        </article>
-
-        <article class="card tilt reveal" data-tags="conversational nlp">
-          <div class="card-top">
-            <h3>Cooking Assistant Bot</h3>
-            <span class="tag">Dialogue</span>
-            <span class="tag">UX</span>
-          </div>
-          <p>
-            Conversational agent delivering step-by-step cooking instructions, designed for clarity and accessibility.
-          </p>
-          <div class="card-foot">
-            <span class="mono">Conversational AI • NLP</span>
-            <span class="pill">Assistant</span>
-          </div>
-        </article>
-
-        <article class="card tilt reveal" data-tags="nlp research">
-          <div class="card-top">
-            <h3>Text Mining: World Cup Twitter</h3>
-            <span class="tag">NLP</span>
-            <span class="tag">Text Mining</span>
-          </div>
-          <p>
-            Combined machine learning and rule-based approaches for sentiment analysis,
-            including topic classification and named entity recognition.
-          </p>
-          <div class="card-foot">
-            <span class="mono">Topic • NER • Sentiment</span>
-            <span class="pill">Framework</span>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS -->
-    <section id="publications" class="section section-dark">
-      <div class="section-head reveal">
-        <h2>Publications</h2>
-        <p>Peer-reviewed conference publications connecting linked data and resilience planning.</p>
-      </div>
-
-      <div class="glass reveal">
-        <ul class="pub-list">
-          <li>
-            <span class="pub-venue">31st ACM SIGSPATIAL (2023)</span>
-            <span class="pub-title">Converting and Enriching Geoannotated Event Data: Integrating Information for Ukraine Resilience</span>
-          </li>
-          <li>
-            <span class="pub-venue">BNAIC (2023)</span>
-            <span class="pub-title">Using Integrated and Enriched Linked Data for Ukraine Resilience</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section id="skills" class="section">
-      <div class="section-head reveal">
-        <h2>Skills</h2>
-        <p>Technical toolset oriented toward robust data work and deployable AI systems.</p>
-      </div>
-
-      <div class="skills reveal">
-        <span class="skill">Python</span>
-        <span class="skill">SQL</span>
-        <span class="skill">NLP</span>
-        <span class="skill">Machine Learning</span>
-        <span class="skill">Flask</span>
-        <span class="skill">FastAPI</span>
-        <span class="skill">Pandas</span>
-        <span class="skill">NumPy</span>
-        <span class="skill">Matplotlib</span>
-        <span class="skill">SPARQL</span>
-        <span class="skill">RDF</span>
-        <span class="skill">GitHub</span>
-        <span class="skill">Data Visualization</span>
-        <span class="skill">API Integration</span>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section section-dark">
-      <div class="section-head reveal">
-        <h2>Contact</h2>
-        <p>If you want to collaborate on applied AI, NLP, or research-to-product work, I would be glad to connect.</p>
-      </div>
-
-      <div class="contact-grid">
-        <div class="glass reveal">
-          <h3>Channels</h3>
-          <div class="contact-item">
-            <span class="contact-k">Email</span>
-            <a class="contact-v" href="mailto:manarattar77@gmail.com">manarattar77@gmail.com</a>
-          </div>
-          <div class="contact-item">
-            <span class="contact-k">LinkedIn</span>
-            <a class="contact-v" href="https://www.linkedin.com/in/manar-attar" target="_blank" rel="noreferrer">linkedin.com/in/manar-attar</a>
-          </div>
-        </div>
-
-        <div class="glass reveal">
-          <h3>Download</h3>
-          <p class="subtle">
-            Add your CV PDF into the repository and link it here (e.g., <span class="mono">assets/ManarAttarCV.pdf</span>).
-          </p>
-          <a class="btn primary" href="assets/ManarAttarCV.pdf" target="_blank" rel="noreferrer">Open CV (PDF)</a>
-        </div>
-      </div>
-
-      <footer class="footer">
-        <span class="subtle">© <span id="year"></span> Manar Attar — AI Lab Interface</span>
-        <a class="backtop" href="#top">Back to top ↑</a>
-      </footer>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
