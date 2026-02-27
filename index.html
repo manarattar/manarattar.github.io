@@ -1,62 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Manar Systems Lab</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Manar Systems Lab</title>
+  <meta name="description" content="Research-grade AI founder portfolio: terminal-driven, dossier-based, graph-navigated systems lab." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <!-- BOOT -->
+  <div id="boot" class="boot" aria-hidden="false">
+    <div class="bootFrame">
+      <div class="bootTitle">MANAR SYSTEMS LAB</div>
+      <div class="bootSub">research console • product dossiers • cognitive map</div>
+      <pre id="bootLog" class="bootLog"></pre>
+      <div class="bootHint">Press Enter to continue</div>
+    </div>
+    <div class="bootFade" aria-hidden="true"></div>
+  </div>
 
-<!-- Boot Screen -->
-<div id="bootScreen" class="boot">
-<pre id="bootText"></pre>
-</div>
+  <!-- APP -->
+  <div id="app" class="app" aria-hidden="true">
+    <header class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <div>
+          <div class="brandTitle">MANAR SYSTEMS LAB</div>
+          <div class="brandSub">minimal research OS • founder-grade systems thinking</div>
+        </div>
+      </div>
 
-<!-- Main Interface -->
-<div id="app" class="hidden">
+      <div class="actions">
+        <button id="btnMute" class="btn ghost" title="Mute audio">Mute</button>
+        <button id="btnTheme" class="btn ghost" title="Toggle accent">Theme</button>
+        <button id="btnRecenter" class="btn ghost" title="Recenter map (R)">Recenter</button>
+        <a class="btn ghost" href="assets/ManarAttarCV.pdf" target="_blank" rel="noreferrer" title="Open CV PDF">CV.pdf</a>
+      </div>
+    </header>
 
-<header class="header">
-<div class="logo">MANAR SYSTEMS LAB</div>
-<div class="tagline">From Research to Intelligent Systems</div>
-</header>
+    <main class="layout">
+      <section class="mapPane" aria-label="Cognitive systems map">
+        <canvas id="map"></canvas>
+        <div class="hud" aria-hidden="true">
+          <div class="hudRow"><span class="k">mode</span><span class="v">force graph</span></div>
+          <div class="hudRow"><span class="k">selected</span><span id="hudSelected" class="v">none</span></div>
+          <div class="hudRow"><span class="k">hint</span><span class="v">drag nodes • scroll zoom • right-drag pan</span></div>
+        </div>
+      </section>
 
-<section class="hero">
-<h1>Building AI Systems That Actually Work.</h1>
-<p>
-Applied Artificial Intelligence, NLP, and system architecture bridging
-research rigor with real-world deployment.
-</p>
-<button onclick="focusGraph()">Explore Systems</button>
-</section>
+      <aside class="sidePane" aria-label="Dossier panel and terminal">
+        <section id="panel" class="panel panel--intro" aria-label="Dossier panel">
+          <div class="panelHead">
+            <div>
+              <div id="panelTitle" class="panelTitle">Initialize</div>
+              <div id="panelMeta" class="panelMeta">This interface is navigated by graph selection and terminal commands.</div>
+            </div>
+            <div id="panelChip" class="chip">SYSTEM</div>
+          </div>
 
-<section class="workspace">
+          <div class="panelBody">
+            <p class="lead">
+              This portfolio is structured like a lab OS: a cognitive map of systems, research artifacts, and capabilities.
+              Select nodes to inspect dossiers, or use the terminal to navigate with precision.
+            </p>
 
-<div class="leftPane">
-<canvas id="graphCanvas"></canvas>
-</div>
+            <div class="grid">
+              <div class="card">
+                <div class="cardK">Founder Positioning</div>
+                <div class="cardV">Research discipline → product systems → deployment thinking.</div>
+              </div>
+              <div class="card">
+                <div class="cardK">Core Focus</div>
+                <div class="cardV">NLP • Applied ML • Data Pipelines • LLM tooling.</div>
+              </div>
+              <div class="card">
+                <div class="cardK">Fast Start</div>
+                <div class="cardV mono">type: help</div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-<div class="rightPane">
-<div id="panel">
-<h2>System Console</h2>
-<p>Select a node to inspect its dossier.</p>
-</div>
+        <section class="terminal" aria-label="Terminal">
+          <div class="termHead">
+            <div class="termTitle">console</div>
+            <div class="termHint mono">commands: help • ls • open • focus • map • search</div>
+          </div>
 
-<div class="terminal">
-<div id="terminalOutput"></div>
-<div class="terminalInput">
-<span>manar@systems:~$</span>
-<input type="text" id="cmd" autocomplete="off">
-</div>
-</div>
-</div>
+          <div id="termOut" class="termOut" role="log" aria-live="polite"></div>
 
-</section>
+          <div class="termIn">
+            <span class="prompt mono">manar@lab:~$</span>
+            <input id="termIn" class="termInput mono" type="text" autocomplete="off" spellcheck="false" />
+          </div>
+        </section>
+      </aside>
+    </main>
 
-</div>
+    <!-- MODAL DOSSIER -->
+    <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-label="Dossier overlay">
+      <div id="modalBg" class="modalBg" aria-hidden="true"></div>
+      <div class="modalCard" role="document">
+        <button id="modalClose" class="modalClose" aria-label="Close">×</button>
+        <div id="modalBody" class="modalBody"></div>
+      </div>
+    </div>
+  </div>
 
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
