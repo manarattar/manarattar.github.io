@@ -1,6 +1,6 @@
 body{
   margin:0;
-  font-family:'Inter', sans-serif;
+  font-family:'Inter',sans-serif;
   background:#0a0f1a;
   color:white;
   overflow-x:hidden;
@@ -31,15 +31,51 @@ body{
 .topbar{
   padding:20px;
   text-align:center;
+  font-weight:600;
+  letter-spacing:2px;
 }
 
 .hero{
-  padding:100px 20px;
+  padding:120px 20px;
   text-align:center;
+}
+
+.hero h1{
+  font-size:48px;
+  margin-bottom:10px;
+}
+
+.hero h2{
+  font-weight:300;
+  color:#aaa;
+}
+
+.terminal{
+  margin-top:30px;
+  font-family:'JetBrains Mono',monospace;
+  color:cyan;
+}
+
+.cursor{
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+  50%{opacity:0;}
 }
 
 .section{
   padding:80px 20px;
+  max-width:1000px;
+  margin:auto;
+}
+
+.section.dark{
+  background:#111827;
+}
+
+.block{
+  margin-bottom:30px;
 }
 
 .filters{
@@ -70,25 +106,19 @@ body{
   background:#141c2e;
   padding:20px;
   border-radius:12px;
-  transition:transform .2s ease;
-  transform-style:preserve-3d;
+  transition:transform .2s ease, box-shadow .2s ease;
 }
 
 .card:hover{
-  transform:rotateY(4deg) rotateX(4deg);
+  transform:translateY(-5px);
+  box-shadow:0 10px 20px rgba(0,0,0,0.5);
 }
 
-.terminal{
-  font-family:'JetBrains Mono', monospace;
-  margin-top:20px;
-  font-size:14px;
-  color:cyan;
-}
-
-.cursor{
-  animation:blink 1s infinite;
-}
-
-@keyframes blink{
-  50%{opacity:0;}
+.skills span{
+  display:inline-block;
+  margin:5px;
+  padding:8px 14px;
+  background:cyan;
+  color:black;
+  border-radius:20px;
 }
