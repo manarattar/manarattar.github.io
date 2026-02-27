@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <title>Manar Attar | AI Research Lab</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -13,90 +14,90 @@
 <canvas id="particles"></canvas>
 <div id="scrollProgress"><div class="bar"></div></div>
 
-<header class="topbar">MANAR ATTAR — AI LAB INTERFACE</header>
+<header class="topbar">
+MANAR ATTAR — AI RESEARCH LAB
+</header>
 
-<!-- HERO -->
 <section class="hero">
-  <h1>Artificial Intelligence Systems</h1>
-  <div class="typing"><span id="typing"></span><span class="cursor">|</span></div>
+<h1>Artificial Intelligence & Language Systems</h1>
+<div class="typing"><span id="typing"></span><span class="cursor">|</span></div>
 </section>
 
 <!-- EXPERIENCE -->
 <section class="section experience">
-  <h2>Experience Signal Timeline</h2>
+<h2>Professional Experience</h2>
 
-  <div class="timeline">
-    <div class="node">
-      <div class="dot"></div>
-      <div class="content">
-        <h3>AI Consultant — Vervai</h3>
-        <p>Designed and deployed applied AI systems. Led workshops bridging research and implementation.</p>
-      </div>
-    </div>
+<div class="exp-card">
+<h3>AI Consultant — Vervai (Apr 2024 – Present)</h3>
+<p>Designed and implemented applied AI solutions with focus on practical innovation. Organized AI workshops bridging theoretical knowledge and deployment practice.</p>
+</div>
 
-    <div class="node">
-      <div class="dot"></div>
-      <div class="content">
-        <h3>Innovation Consultant — Daffee</h3>
-        <p>Built GPT assistants and automation pipelines improving operational efficiency.</p>
-      </div>
-    </div>
-  </div>
+<div class="exp-card">
+<h3>Innovation Consultant — Daffee (Jun 2024 – Sep 2025)</h3>
+<p>Created role-specific GPT assistants and built semi-automated workflows across marketing, sales, and operations.</p>
+</div>
+
+<h2 style="margin-top:60px;">Education</h2>
+
+<div class="exp-card">
+<h3>MSc Language & AI — Vrije Universiteit Amsterdam (2025–Present)</h3>
+<p>Advanced NLP, language modeling, data annotation & labeling, LLM-based systems.</p>
+</div>
+
+<div class="exp-card">
+<h3>BSc Artificial Intelligence — Vrije Universiteit Amsterdam (2020–2023)</h3>
+<p>Machine learning, statistical modeling, probability theory, hypothesis testing.</p>
+</div>
+
+<div class="exp-card">
+<h3>Minor Data Science</h3>
+<p>Text analysis and NLP for extracting insights from unstructured data.</p>
+</div>
+
 </section>
 
 <!-- PROJECTS -->
 <section class="section dark">
-  <h2>Interactive Project Matrix</h2>
+<h2>Project Matrix</h2>
 
-  <div class="projects">
-    <div class="project-card">
-      <div class="layer"></div>
-      <h3>Linked4Resilience</h3>
-      <p>Geo-data integration via Linked Data methodologies.</p>
-    </div>
+<div class="projects">
 
-    <div class="project-card">
-      <div class="layer"></div>
-      <h3>Emotion Classification</h3>
-      <p>Optimized SVM models under class imbalance.</p>
-    </div>
+<div class="project-card" onclick="openModal('linked')">
+<h3>Linked4Resilience</h3>
+<p>Geo-data integration for crisis response.</p>
+</div>
 
-    <div class="project-card">
-      <div class="layer"></div>
-      <h3>SwipeEat</h3>
-      <p>Adaptive recommendation engine with swipe interface.</p>
-    </div>
-  </div>
+<div class="project-card" onclick="openModal('income')">
+<h3>Income Prediction Study</h3>
+<p>SMOTE vs duplication under imbalance.</p>
+</div>
+
+<div class="project-card" onclick="openModal('swipeeat')">
+<h3>SwipeEat</h3>
+<p>Adaptive meal recommender.</p>
+</div>
+
+<div class="project-card" onclick="openModal('emotion')">
+<h3>Emotion & Sentiment Analysis</h3>
+<p>Optimized SVM models for imbalanced datasets.</p>
+</div>
+
+</div>
 </section>
 
-<!-- PUBLICATIONS -->
-<section class="section publications">
-  <h2>Research Artifacts</h2>
-
-  <div class="pub-card">
-    <h3>ACM SIGSPATIAL 2023</h3>
-    <p>Geoannotated Event Data Integration for Ukraine Resilience.</p>
-  </div>
-
-  <div class="pub-card">
-    <h3>BNAIC 2023</h3>
-    <p>Using Integrated and Enriched Linked Data for Crisis Response.</p>
-  </div>
+<!-- SKILLS NETWORK -->
+<section class="section skills-section">
+<h2>Neural Skill Network</h2>
+<canvas id="skillNetwork"></canvas>
 </section>
 
-<!-- SKILLS -->
-<section class="section skills-section dark">
-  <h2>Skill Constellation</h2>
-  <div class="skill-grid">
-    <div class="skill">Python</div>
-    <div class="skill">NLP</div>
-    <div class="skill">Machine Learning</div>
-    <div class="skill">SQL</div>
-    <div class="skill">Flask</div>
-    <div class="skill">SPARQL</div>
-    <div class="skill">Data Visualization</div>
-  </div>
-</section>
+<!-- MODAL -->
+<div id="modal" class="modal">
+<div class="modal-content">
+<span class="close" onclick="closeModal()">&times;</span>
+<div id="modalBody"></div>
+</div>
+</div>
 
 <script src="script.js"></script>
 </body>
