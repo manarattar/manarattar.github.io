@@ -9,9 +9,9 @@ window.addEventListener("scroll", () => {
 /* Typing animation */
 const typing = document.getElementById("typing");
 const messages = [
-  "Loading AI modules...",
-  "Initializing NLP pipeline...",
-  "Deploying research artifacts..."
+  "Initializing AI Research Interface...",
+  "Loading NLP Pipelines...",
+  "Deploying Intelligent Systems..."
 ];
 
 let msgIndex = 0;
@@ -34,7 +34,7 @@ function typeEffect(){
 
 typeEffect();
 
-/* Project filtering */
+/* Filtering */
 const buttons = document.querySelectorAll(".filters button");
 const cards = document.querySelectorAll(".card");
 
@@ -56,7 +56,7 @@ buttons.forEach(btn=>{
   });
 });
 
-/* Particle background (simplified & stable) */
+/* Stable particle background */
 const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
@@ -72,8 +72,8 @@ for(let i=0;i<80;i++){
   particles.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
-    vx:(Math.random()-0.5)*0.5,
-    vy:(Math.random()-0.5)*0.5
+    vx:(Math.random()-0.5)*0.4,
+    vy:(Math.random()-0.5)*0.4
   });
 }
 
