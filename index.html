@@ -1,124 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <title>Manar Attar | Cognitive Interface</title>
-  <meta name="description" content="Futuristic cognitive portfolio interface: knowledge graph navigation, project dossiers, research artifacts." />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<title>Manar Systems Lab</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div id="scrollProgress" aria-hidden="true"><div class="bar"></div></div>
 
-  <header class="topbar">
-    <div class="brand">
-      <span class="brandDot"></span>
-      <div class="brandText">
-        <div class="brandTitle">MANAR ATTAR</div>
-        <div class="brandSub">Cognitive Interface • Knowledge Graph Portfolio</div>
-      </div>
-    </div>
+<!-- Boot Screen -->
+<div id="bootScreen" class="boot">
+<pre id="bootText"></pre>
+</div>
 
-    <div class="topActions">
-      <button class="ghostBtn" id="btnRecenter" title="Recenter graph">Recenter</button>
-      <a class="ghostBtn" href="assets/ManarAttarCV.pdf" target="_blank" rel="noreferrer" title="Open CV PDF">
-        CV.pdf
-      </a>
-    </div>
-  </header>
+<!-- Main Interface -->
+<div id="app" class="hidden">
 
-  <main class="layout">
-    <!-- LEFT: Graph Space -->
-    <section class="graphPane" aria-label="Knowledge graph interface">
-      <div class="graphHud">
-        <div class="hudLine">
-          <span class="hudLabel">Mode</span>
-          <span class="hudValue" id="hudMode">Cognitive Map</span>
-        </div>
-        <div class="hudLine">
-          <span class="hudLabel">Selected</span>
-          <span class="hudValue" id="hudSelected">None</span>
-        </div>
-        <div class="hudHint">
-          Drag nodes • Scroll to zoom • Click to open dossier
-        </div>
-      </div>
+<header class="header">
+<div class="logo">MANAR SYSTEMS LAB</div>
+<div class="tagline">From Research to Intelligent Systems</div>
+</header>
 
-      <canvas id="graphCanvas"></canvas>
-      <div class="graphVignette" aria-hidden="true"></div>
-    </section>
+<section class="hero">
+<h1>Building AI Systems That Actually Work.</h1>
+<p>
+Applied Artificial Intelligence, NLP, and system architecture bridging
+research rigor with real-world deployment.
+</p>
+<button onclick="focusGraph()">Explore Systems</button>
+</section>
 
-    <!-- RIGHT: Context Panel -->
-    <aside class="infoPane" aria-label="Context panel">
-      <div class="panel">
-        <div class="panelHead">
-          <div class="panelTitle" id="panelTitle">Initialize</div>
-          <div class="panelChip" id="panelChip">SYSTEM</div>
-        </div>
+<section class="workspace">
 
-        <div class="panelBody">
-          <div class="panelIntro" id="panelIntro">
-            <p class="lead">
-              This portfolio is designed as a cognitive map: knowledge nodes represent your work,
-              research, and technical capabilities. Select any node to inspect its dossier.
-            </p>
-            <div class="quickStats">
-              <div class="stat">
-                <div class="k">Focus</div>
-                <div class="v">NLP • Applied ML • Data Pipelines</div>
-              </div>
-              <div class="stat">
-                <div class="k">Positioning</div>
-                <div class="v">Research ↔ Product Delivery</div>
-              </div>
-              <div class="stat">
-                <div class="k">Language</div>
-                <div class="v">English • Dutch (B2) • Arabic</div>
-              </div>
-            </div>
+<div class="leftPane">
+<canvas id="graphCanvas"></canvas>
+</div>
 
-            <div class="ctaRow">
-              <button class="primaryBtn" id="btnOpenOverview">Open Overview Dossier</button>
-              <button class="ghostBtn" id="btnOpenContact">Contact Node</button>
-            </div>
-          </div>
+<div class="rightPane">
+<div id="panel">
+<h2>System Console</h2>
+<p>Select a node to inspect its dossier.</p>
+</div>
 
-          <div id="panelDynamic" class="panelDynamic" hidden>
-            <!-- filled by JS -->
-          </div>
-        </div>
+<div class="terminal">
+<div id="terminalOutput"></div>
+<div class="terminalInput">
+<span>manar@systems:~$</span>
+<input type="text" id="cmd" autocomplete="off">
+</div>
+</div>
+</div>
 
-        <div class="panelFoot">
-          <div class="mono subtle" id="panelFooterNote">Tip: press “R” to recenter. Press “Esc” to close dossiers.</div>
-        </div>
-      </div>
+</section>
 
-      <div class="miniPanel">
-        <div class="miniTitle">System Traits</div>
-        <div class="traitGrid">
-          <div class="trait">Academic research discipline</div>
-          <div class="trait">Robust evaluation under imbalance</div>
-          <div class="trait">Applied AI delivery & workshops</div>
-          <div class="trait">Linked Data / SPARQL pipelines</div>
-        </div>
-      </div>
-    </aside>
-  </main>
+</div>
 
-  <!-- DOSSIER MODAL -->
-  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-label="Dossier">
-    <div class="modalBackdrop" id="modalBackdrop"></div>
-    <div class="modalShell" role="document" aria-label="Dossier content">
-      <button class="modalClose" id="modalClose" aria-label="Close dossier">×</button>
-      <div id="modalContent" class="modalContent"></div>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
