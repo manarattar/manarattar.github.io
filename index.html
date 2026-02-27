@@ -1,104 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Manar Attar | AI Research Lab</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <title>Manar Attar | Cognitive Interface</title>
+  <meta name="description" content="Futuristic cognitive portfolio interface: knowledge graph navigation, project dossiers, research artifacts." />
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <div id="scrollProgress" aria-hidden="true"><div class="bar"></div></div>
 
-<canvas id="particles"></canvas>
-<div id="scrollProgress"><div class="bar"></div></div>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brandDot"></span>
+      <div class="brandText">
+        <div class="brandTitle">MANAR ATTAR</div>
+        <div class="brandSub">Cognitive Interface • Knowledge Graph Portfolio</div>
+      </div>
+    </div>
 
-<header class="topbar">
-MANAR ATTAR — AI RESEARCH LAB
-</header>
+    <div class="topActions">
+      <button class="ghostBtn" id="btnRecenter" title="Recenter graph">Recenter</button>
+      <a class="ghostBtn" href="assets/ManarAttarCV.pdf" target="_blank" rel="noreferrer" title="Open CV PDF">
+        CV.pdf
+      </a>
+    </div>
+  </header>
 
-<section class="hero">
-<h1>Artificial Intelligence & Language Systems</h1>
-<div class="typing"><span id="typing"></span><span class="cursor">|</span></div>
-</section>
+  <main class="layout">
+    <!-- LEFT: Graph Space -->
+    <section class="graphPane" aria-label="Knowledge graph interface">
+      <div class="graphHud">
+        <div class="hudLine">
+          <span class="hudLabel">Mode</span>
+          <span class="hudValue" id="hudMode">Cognitive Map</span>
+        </div>
+        <div class="hudLine">
+          <span class="hudLabel">Selected</span>
+          <span class="hudValue" id="hudSelected">None</span>
+        </div>
+        <div class="hudHint">
+          Drag nodes • Scroll to zoom • Click to open dossier
+        </div>
+      </div>
 
-<!-- EXPERIENCE -->
-<section class="section experience">
-<h2>Professional Experience</h2>
+      <canvas id="graphCanvas"></canvas>
+      <div class="graphVignette" aria-hidden="true"></div>
+    </section>
 
-<div class="exp-card">
-<h3>AI Consultant — Vervai (Apr 2024 – Present)</h3>
-<p>Designed and implemented applied AI solutions with focus on practical innovation. Organized AI workshops bridging theoretical knowledge and deployment practice.</p>
-</div>
+    <!-- RIGHT: Context Panel -->
+    <aside class="infoPane" aria-label="Context panel">
+      <div class="panel">
+        <div class="panelHead">
+          <div class="panelTitle" id="panelTitle">Initialize</div>
+          <div class="panelChip" id="panelChip">SYSTEM</div>
+        </div>
 
-<div class="exp-card">
-<h3>Innovation Consultant — Daffee (Jun 2024 – Sep 2025)</h3>
-<p>Created role-specific GPT assistants and built semi-automated workflows across marketing, sales, and operations.</p>
-</div>
+        <div class="panelBody">
+          <div class="panelIntro" id="panelIntro">
+            <p class="lead">
+              This portfolio is designed as a cognitive map: knowledge nodes represent your work,
+              research, and technical capabilities. Select any node to inspect its dossier.
+            </p>
+            <div class="quickStats">
+              <div class="stat">
+                <div class="k">Focus</div>
+                <div class="v">NLP • Applied ML • Data Pipelines</div>
+              </div>
+              <div class="stat">
+                <div class="k">Positioning</div>
+                <div class="v">Research ↔ Product Delivery</div>
+              </div>
+              <div class="stat">
+                <div class="k">Language</div>
+                <div class="v">English • Dutch (B2) • Arabic</div>
+              </div>
+            </div>
 
-<h2 style="margin-top:60px;">Education</h2>
+            <div class="ctaRow">
+              <button class="primaryBtn" id="btnOpenOverview">Open Overview Dossier</button>
+              <button class="ghostBtn" id="btnOpenContact">Contact Node</button>
+            </div>
+          </div>
 
-<div class="exp-card">
-<h3>MSc Language & AI — Vrije Universiteit Amsterdam (2025–Present)</h3>
-<p>Advanced NLP, language modeling, data annotation & labeling, LLM-based systems.</p>
-</div>
+          <div id="panelDynamic" class="panelDynamic" hidden>
+            <!-- filled by JS -->
+          </div>
+        </div>
 
-<div class="exp-card">
-<h3>BSc Artificial Intelligence — Vrije Universiteit Amsterdam (2020–2023)</h3>
-<p>Machine learning, statistical modeling, probability theory, hypothesis testing.</p>
-</div>
+        <div class="panelFoot">
+          <div class="mono subtle" id="panelFooterNote">Tip: press “R” to recenter. Press “Esc” to close dossiers.</div>
+        </div>
+      </div>
 
-<div class="exp-card">
-<h3>Minor Data Science</h3>
-<p>Text analysis and NLP for extracting insights from unstructured data.</p>
-</div>
+      <div class="miniPanel">
+        <div class="miniTitle">System Traits</div>
+        <div class="traitGrid">
+          <div class="trait">Academic research discipline</div>
+          <div class="trait">Robust evaluation under imbalance</div>
+          <div class="trait">Applied AI delivery & workshops</div>
+          <div class="trait">Linked Data / SPARQL pipelines</div>
+        </div>
+      </div>
+    </aside>
+  </main>
 
-</section>
+  <!-- DOSSIER MODAL -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-label="Dossier">
+    <div class="modalBackdrop" id="modalBackdrop"></div>
+    <div class="modalShell" role="document" aria-label="Dossier content">
+      <button class="modalClose" id="modalClose" aria-label="Close dossier">×</button>
+      <div id="modalContent" class="modalContent"></div>
+    </div>
+  </div>
 
-<!-- PROJECTS -->
-<section class="section dark">
-<h2>Project Matrix</h2>
-
-<div class="projects">
-
-<div class="project-card" onclick="openModal('linked')">
-<h3>Linked4Resilience</h3>
-<p>Geo-data integration for crisis response.</p>
-</div>
-
-<div class="project-card" onclick="openModal('income')">
-<h3>Income Prediction Study</h3>
-<p>SMOTE vs duplication under imbalance.</p>
-</div>
-
-<div class="project-card" onclick="openModal('swipeeat')">
-<h3>SwipeEat</h3>
-<p>Adaptive meal recommender.</p>
-</div>
-
-<div class="project-card" onclick="openModal('emotion')">
-<h3>Emotion & Sentiment Analysis</h3>
-<p>Optimized SVM models for imbalanced datasets.</p>
-</div>
-
-</div>
-</section>
-
-<!-- SKILLS NETWORK -->
-<section class="section skills-section">
-<h2>Neural Skill Network</h2>
-<canvas id="skillNetwork"></canvas>
-</section>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-<div class="modal-content">
-<span class="close" onclick="closeModal()">&times;</span>
-<div id="modalBody"></div>
-</div>
-</div>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
