@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Manar Attar | AI Portfolio</title>
+  <title>Manar Attar | AI Research Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -15,41 +15,90 @@
 <div id="scrollProgress"><div class="bar"></div></div>
 
 <header class="topbar">
-  <h1>Manar Attar</h1>
+  <div class="logo">MANAR // AI LAB</div>
 </header>
 
 <section class="hero">
-  <h2>AI & NLP Systems</h2>
+  <h1>Manar Attar</h1>
+  <h2>AI Consultant · NLP Engineer · Data Scientist</h2>
+
   <div class="terminal">
     <span id="typing"></span><span class="cursor">|</span>
   </div>
 </section>
 
 <section class="section">
+  <h2>Experience</h2>
+
+  <div class="block">
+    <h3>AI Consultant – Vervai</h3>
+    <p>Designing and implementing applied AI systems. Leading AI workshops and translating research into deployable solutions.</p>
+  </div>
+
+  <div class="block">
+    <h3>Innovation Consultant – Daffee</h3>
+    <p>Built GPT-powered assistants and automated workflows across marketing, sales, and operations.</p>
+  </div>
+</section>
+
+<section class="section dark">
   <h2>Projects</h2>
 
   <div class="filters">
     <button data-filter="all" class="active">All</button>
     <button data-filter="nlp">NLP</button>
     <button data-filter="data">Data</button>
+    <button data-filter="recsys">Recommender</button>
   </div>
 
   <div class="cards">
-    <div class="card" data-tags="nlp">
-      <h3>Emotion Classification</h3>
-      <p>SVM-based sentiment modeling under class imbalance.</p>
-    </div>
-
     <div class="card" data-tags="data">
       <h3>Linked4Resilience</h3>
-      <p>Geo-data integration for crisis response.</p>
+      <p>Geo-data integration pipelines for crisis response using RDF and Linked Data.</p>
     </div>
 
-    <div class="card" data-tags="nlp data">
+    <div class="card" data-tags="nlp">
+      <h3>Emotion & Sentiment Classification</h3>
+      <p>SVM-based modeling under severe class imbalance conditions.</p>
+    </div>
+
+    <div class="card" data-tags="recsys data">
       <h3>SwipeEat</h3>
-      <p>Preference-based meal recommender.</p>
+      <p>Preference-based meal recommendation system with swipe-driven UI.</p>
+    </div>
+
+    <div class="card" data-tags="nlp">
+      <h3>Cooking Assistant Bot</h3>
+      <p>Conversational AI delivering structured step-by-step cooking guidance.</p>
     </div>
   </div>
+</section>
+
+<section class="section">
+  <h2>Publications</h2>
+  <ul>
+    <li>ACM SIGSPATIAL 2023 – Geoannotated Event Data Integration</li>
+    <li>BNAIC 2023 – Linked Data for Ukraine Resilience</li>
+  </ul>
+</section>
+
+<section class="section dark">
+  <h2>Skills</h2>
+  <div class="skills">
+    <span>Python</span>
+    <span>NLP</span>
+    <span>Machine Learning</span>
+    <span>SQL</span>
+    <span>Flask</span>
+    <span>SPARQL</span>
+    <span>Data Visualization</span>
+  </div>
+</section>
+
+<section class="section">
+  <h2>Contact</h2>
+  <p>Email: manarattar77@gmail.com</p>
+  <p>LinkedIn: linkedin.com/in/manar-attar</p>
 </section>
 
 <script src="script.js"></script>
