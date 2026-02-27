@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Manar Attar | AI Research Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Manar Attar | AI Research Lab</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -14,91 +13,89 @@
 <canvas id="particles"></canvas>
 <div id="scrollProgress"><div class="bar"></div></div>
 
-<header class="topbar">
-  <div class="logo">MANAR // AI LAB</div>
-</header>
+<header class="topbar">MANAR ATTAR — AI LAB INTERFACE</header>
 
+<!-- HERO -->
 <section class="hero">
-  <h1>Manar Attar</h1>
-  <h2>AI Consultant · NLP Engineer · Data Scientist</h2>
+  <h1>Artificial Intelligence Systems</h1>
+  <div class="typing"><span id="typing"></span><span class="cursor">|</span></div>
+</section>
 
-  <div class="terminal">
-    <span id="typing"></span><span class="cursor">|</span>
+<!-- EXPERIENCE -->
+<section class="section experience">
+  <h2>Experience Signal Timeline</h2>
+
+  <div class="timeline">
+    <div class="node">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>AI Consultant — Vervai</h3>
+        <p>Designed and deployed applied AI systems. Led workshops bridging research and implementation.</p>
+      </div>
+    </div>
+
+    <div class="node">
+      <div class="dot"></div>
+      <div class="content">
+        <h3>Innovation Consultant — Daffee</h3>
+        <p>Built GPT assistants and automation pipelines improving operational efficiency.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section">
-  <h2>Experience</h2>
-
-  <div class="block">
-    <h3>AI Consultant – Vervai</h3>
-    <p>Designing and implementing applied AI systems. Leading AI workshops and translating research into deployable solutions.</p>
-  </div>
-
-  <div class="block">
-    <h3>Innovation Consultant – Daffee</h3>
-    <p>Built GPT-powered assistants and automated workflows across marketing, sales, and operations.</p>
-  </div>
-</section>
-
+<!-- PROJECTS -->
 <section class="section dark">
-  <h2>Projects</h2>
+  <h2>Interactive Project Matrix</h2>
 
-  <div class="filters">
-    <button data-filter="all" class="active">All</button>
-    <button data-filter="nlp">NLP</button>
-    <button data-filter="data">Data</button>
-    <button data-filter="recsys">Recommender</button>
-  </div>
-
-  <div class="cards">
-    <div class="card" data-tags="data">
+  <div class="projects">
+    <div class="project-card">
+      <div class="layer"></div>
       <h3>Linked4Resilience</h3>
-      <p>Geo-data integration pipelines for crisis response using RDF and Linked Data.</p>
+      <p>Geo-data integration via Linked Data methodologies.</p>
     </div>
 
-    <div class="card" data-tags="nlp">
-      <h3>Emotion & Sentiment Classification</h3>
-      <p>SVM-based modeling under severe class imbalance conditions.</p>
+    <div class="project-card">
+      <div class="layer"></div>
+      <h3>Emotion Classification</h3>
+      <p>Optimized SVM models under class imbalance.</p>
     </div>
 
-    <div class="card" data-tags="recsys data">
+    <div class="project-card">
+      <div class="layer"></div>
       <h3>SwipeEat</h3>
-      <p>Preference-based meal recommendation system with swipe-driven UI.</p>
-    </div>
-
-    <div class="card" data-tags="nlp">
-      <h3>Cooking Assistant Bot</h3>
-      <p>Conversational AI delivering structured step-by-step cooking guidance.</p>
+      <p>Adaptive recommendation engine with swipe interface.</p>
     </div>
   </div>
 </section>
 
-<section class="section">
-  <h2>Publications</h2>
-  <ul>
-    <li>ACM SIGSPATIAL 2023 – Geoannotated Event Data Integration</li>
-    <li>BNAIC 2023 – Linked Data for Ukraine Resilience</li>
-  </ul>
-</section>
+<!-- PUBLICATIONS -->
+<section class="section publications">
+  <h2>Research Artifacts</h2>
 
-<section class="section dark">
-  <h2>Skills</h2>
-  <div class="skills">
-    <span>Python</span>
-    <span>NLP</span>
-    <span>Machine Learning</span>
-    <span>SQL</span>
-    <span>Flask</span>
-    <span>SPARQL</span>
-    <span>Data Visualization</span>
+  <div class="pub-card">
+    <h3>ACM SIGSPATIAL 2023</h3>
+    <p>Geoannotated Event Data Integration for Ukraine Resilience.</p>
+  </div>
+
+  <div class="pub-card">
+    <h3>BNAIC 2023</h3>
+    <p>Using Integrated and Enriched Linked Data for Crisis Response.</p>
   </div>
 </section>
 
-<section class="section">
-  <h2>Contact</h2>
-  <p>Email: manarattar77@gmail.com</p>
-  <p>LinkedIn: linkedin.com/in/manar-attar</p>
+<!-- SKILLS -->
+<section class="section skills-section dark">
+  <h2>Skill Constellation</h2>
+  <div class="skill-grid">
+    <div class="skill">Python</div>
+    <div class="skill">NLP</div>
+    <div class="skill">Machine Learning</div>
+    <div class="skill">SQL</div>
+    <div class="skill">Flask</div>
+    <div class="skill">SPARQL</div>
+    <div class="skill">Data Visualization</div>
+  </div>
 </section>
 
 <script src="script.js"></script>
