@@ -1,50 +1,109 @@
-/* Scroll progress */
+/* Scroll Progress */
 window.addEventListener("scroll",()=>{
 const scrollTop=document.documentElement.scrollTop;
 const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
 document.querySelector("#scrollProgress .bar").style.width=(scrollTop/height)*100+"%";
 });
 
-/* Typing animation */
+/* Typing */
 const typing=document.getElementById("typing");
 const messages=[
-"Initializing Research Modules...",
-"Loading Neural Pipelines...",
-"Deploying Intelligent Systems..."
+"Loading NLP Pipelines...",
+"Deploying Machine Learning Systems...",
+"Integrating Linked Data..."
 ];
-let msgIndex=0,charIndex=0;
+let m=0,c=0;
 function type(){
-if(charIndex<messages[msgIndex].length){
-typing.textContent+=messages[msgIndex][charIndex++];
+if(c<messages[m].length){
+typing.textContent+=messages[m][c++];
 setTimeout(type,40);
 }else{
-setTimeout(()=>{
-typing.textContent="";
-charIndex=0;
-msgIndex=(msgIndex+1)%messages.length;
-type();
-},1500);
+setTimeout(()=>{typing.textContent="";c=0;m=(m+1)%messages.length;type();},1500);
 }}
 type();
 
-/* Particle background */
-const canvas=document.getElementById("particles");
+/* Modal */
+const modal=document.getElementById("modal");
+const modalBody=document.getElementById("modalBody");
+
+function openModal(project){
+let content="";
+
+if(project==="linked"){
+content=`<h2>Linked4Resilience</h2>
+<p>Built pipelines for cleaning and integrating geo-annotated crisis datasets using RDF and SPARQL.</p>
+<p>Result: Publication at ACM SIGSPATIAL focusing on resilience planning.</p>`;
+}
+if(project==="income"){
+content=`<h2>Income Prediction Study</h2>
+<p>Analyzed class imbalance. Compared duplication vs SMOTE synthetic oversampling.</p>
+<p>Result: Improved predictive robustness and accuracy.</p>`;
+}
+if(project==="swipeeat"){
+content=`<h2>SwipeEat</h2>
+<p>Implemented preference-based recommendation algorithm with swipe UI.</p>
+<p>Built using Python, Flask, JavaScript, HTML & CSS.</p>`;
+}
+if(project==="emotion"){
+content=`<h2>Emotion & Sentiment Analysis</h2>
+<p>Applied TF-IDF, SVM optimization, error analysis under imbalance.</p>
+<p>Achieved strong precision-recall trade-offs.</p>`;
+}
+
+modalBody.innerHTML=content;
+modal.style.display="flex";
+}
+
+function closeModal(){
+modal.style.display="none";
+}
+
+/* Neural Skill Network */
+const canvas=document.getElementById("skillNetwork");
 const ctx=canvas.getContext("2d");
-function resize(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
-resize();window.addEventListener("resize",resize);
-const particles=[];
-for(let i=0;i<70;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,vx:(Math.random()-0.5)*0.5,vy:(Math.random()-0.5)*0.5});
-}
-function animate(){
+canvas.width=canvas.offsetWidth;
+canvas.height=400;
+
+const skills=["Python","NLP","Machine Learning","SQL","Flask","SPARQL","Data Visualization","LLMs","RDF"];
+
+const nodes=skills.map(()=>({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*1,
+vy:(Math.random()-0.5)*1
+}));
+
+function animateNetwork(){
 ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="rgba(0,255,255,0.7)";
-particles.forEach(p=>{
-p.x+=p.vx;p.y+=p.vy;
-if(p.x<0||p.x>canvas.width)p.vx*=-1;
-if(p.y<0||p.y>canvas.height)p.vy*=-1;
-ctx.beginPath();ctx.arc(p.x,p.y,2,0,Math.PI*2);ctx.fill();
+
+nodes.forEach((n,i)=>{
+n.x+=n.vx;
+n.y+=n.vy;
+if(n.x<0||n.x>canvas.width)n.vx*=-1;
+if(n.y<0||n.y>canvas.height)n.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(n.x,n.y,6,0,Math.PI*2);
+ctx.fillStyle="cyan";
+ctx.fill();
+ctx.fillText(skills[i],n.x+8,n.y);
 });
-requestAnimationFrame(animate);
+
+for(let i=0;i<nodes.length;i++){
+for(let j=i+1;j<nodes.length;j++){
+let dx=nodes[i].x-nodes[j].x;
+let dy=nodes[i].y-nodes[j].y;
+let dist=Math.sqrt(dx*dx+dy*dy);
+if(dist<150){
+ctx.beginPath();
+ctx.moveTo(nodes[i].x,nodes[i].y);
+ctx.lineTo(nodes[j].x,nodes[j].y);
+ctx.strokeStyle="rgba(0,255,255,0.3)";
+ctx.stroke();
 }
-animate();
+}
+}
+
+requestAnimationFrame(animateNetwork);
+}
+animateNetwork();
